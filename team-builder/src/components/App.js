@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Create from "./App";
-import Note from "./Form";
+import Create from "./Creates";
+import Note from "./Note";
 
 function App() {
   const [notes, setNotes] = useState([
     {
-      title: "",
-      body: ""
+      title: 'Frontend',
+      name: 'Dallas James',
+      email: 'dallasjames43@yahoo.com'
     }
   ]);
 
