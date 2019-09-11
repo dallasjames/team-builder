@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
+import Note from './Form';
 import './App.css';
 
 function App() {
 
-  const initialRoles = { Title: "", Name: "", Email: "" }
+  const initialRoles = { Title: "", Name: "", Email: "" };
   const [newLogin, setNewLogin] = useState(initialRoles);
-
+  
   const handleChange = event => {
-    setNewLogin({
-      ...newLogin,
-      [event.target.name]: event.target.value
-    });
+    const { name, value } = event.target
+    setNewLogin({...newLogin, [name]:value})
   };
-
-  const resetForm = event => {
-    setNewLogin(initialRoles);
-  };
-
+  
   const handleSubmit = event => {
     event.preventDefault();
     console.log(newLogin);
-    resetForm();
+    Note();
   };
 
   return (
     <div className="App">
-      <form onSubmit={function(event){handleSubmit(event); resetForm(event);}}>
+      <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Title"
         name="Title"
         onChange={handleChange}
       />
-
+      
       <input
         type="text"
         placeholder="Name"
@@ -48,6 +43,7 @@ function App() {
       />
       <button type="submit">Submit</button>
     </form>
+    <Note newLogin={newLogin}/>
     </div>
   );
 }
